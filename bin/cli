@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if ! command -v perl >/dev/null 2>&1; then
+    echo "No Perl on the system" >&2
+    exit 1
+fi
+
+CWD=$(CDPATH='' cd -P -- "$(dirname -- "$0")" && pwd) || exit 1
+LIBEXEC="${CWD}/../libexec/cli"
+if ! [ -f "$LIBEXEC" ]; then
+    echo "CLI program not found" >&2
+    exit 1
+fi
+
+perl "$LIBEXEC" "$@"
