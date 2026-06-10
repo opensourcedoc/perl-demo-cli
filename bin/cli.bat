@@ -10,7 +10,7 @@ set cwd=%~dp0
 set libexec=%cwd%\..\libexec\cli
 if not exist %libexec% (
     echo CLI program not found >&2
-    exit /b1
+    exit /b 1
 )
 
 perl %libexec% %*
